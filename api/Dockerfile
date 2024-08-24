@@ -1,20 +1,12 @@
-# Usar uma imagem base do Python
-FROM python:3.11
+FROM python:3.11-slim as base
 
-# Definir o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copiar o arquivo de requisitos para o diretório de trabalho
-COPY ./requirements.txt ./requirements.txt
-
-# Instalar as dependências do Python
+COPY ./src/requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar o código da API para o diretório de trabalho
-COPY ./src ./src
+COPY ./src/ /app/
 
-# Expor a porta em que o Django será executado
 EXPOSE 8000
 
-# Comando para iniciar o servidor Django
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "myproject.wsgi:application"]
+CMD ["python", "app.py", "runserver", "0.0.0.0:8000"]

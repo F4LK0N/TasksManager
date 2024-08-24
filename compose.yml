@@ -14,6 +14,8 @@ services:
     ports:
       - 5432:5432
   api:
+    image: f4lk0n/fkn:${COMPOSE_PREFIX}api
+    container_name: ${COMPOSE_PREFIX}api
     build:
       context: ./api
     hostname: api
