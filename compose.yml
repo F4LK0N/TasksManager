@@ -23,6 +23,16 @@ services:
       - db
     volumes:
       - ./api/src:/app
+    environment:
+      - DB_NAME=app
+      - DB_USER=app
+      - DB_PASS=app
+      - ADMIN_EMAIL=admin@app.com
+      - ADMIN_LOGIN=admin
+      - ADMIN_PASS=admin
+      - USER_EMAIL=user@app.com
+      - USER_LOGIN=user
+      - USER_PASS=user
     ports:
       - 8000:8000
 volumes:

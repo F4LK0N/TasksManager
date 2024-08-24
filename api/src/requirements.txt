@@ -1,3 +1,4 @@
 django
 djangorestframework
+django-createsuperuserwithpassword
 psycopg2-binary
