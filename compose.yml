@@ -1,0 +1,17 @@
+services:
+  db:
+    image: f4lk0n/fkn:${COMPOSE_PREFIX}db
+    container_name: ${COMPOSE_PREFIX}db
+    hostname: db
+    build:
+      context: ./db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=app
+    ports:
+      - 5432:5432
+volumes:
+  db_data:

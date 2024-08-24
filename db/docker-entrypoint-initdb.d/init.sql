@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS tasks (
+    id SERIAL PRIMARY KEY,
+    id_parent INT DEFAULT 0,
+    
+    completion INT NOT NULL DEFAULT 0,
+    time_expected INT NOT NULL DEFAULT 0,
+    name VARCHAR(255) NOT NULL DEFAULT '',
+    description TEXT NOT NULL DEFAULT '',
+    
+    log_create TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    log_modify TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS work (
+    id SERIAL PRIMARY KEY,
+    id_task INT NOT NULL,
+    
+    time_started INT NOT NULL DEFAULT 0,
+    time_worked INT NOT NULL DEFAULT 0,
+    name VARCHAR(255) NOT NULL DEFAULT '',
+    description TEXT NOT NULL DEFAULT '',
+    
+    log_create TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    log_modify TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
